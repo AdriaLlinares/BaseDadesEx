@@ -1,0 +1,33 @@
+DROP DATABASE IF EXISTS EXERCICI3_PDF2;
+CREATE DATABASE EXERCICI3_PDF2;
+USE EXERCICI3_PDF2;
+
+CREATE TABLE mecanics(
+	dni VARCHAR(9) PRIMARY KEY,
+	nom CHAR(30),
+	edat INT(3)
+);
+CREATE TABLE vehicles(
+	matricula VARCHAR (7) PRIMARY KEY,
+	propietari CHAR(30),
+	marca CHAR (20),
+	dni VARCHAR(9),
+	FOREIGN KEY(dni) REFERENCES mecanics(dni)
+	ON UPDATE SET NULL
+	ON DELETE SET NULL
+);
+
+INSERT INTO mecanics VALUES ('55667788G','Adria','29');
+INSERT INTO vehicles VALUES ('1234AFG','Alex','Logitech','55667788G');
+
+DELETE FROM vehicles WHERE matricula = '1234AFG';
+
+
+ 
+INSERT INTO mecanics VALUES ('55667788G','Adria','29');
+INSERT INTO vehicles VALUES ('1234AFG','Alex','Logitech','55667788G');
+
+UPDATE mecanics SET dni='87654321A' WHERE dni = '55667788G'; 
+
+SELECT * FROM mecanics;
+SELECT * FROM vehicles;
